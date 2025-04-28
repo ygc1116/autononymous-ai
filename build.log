@@ -1,0 +1,24 @@
+
+> mastra-ai@1.0.0 build
+> mastra build
+
+entryFile /workspace/autononymous-ai/src/mastra/index.ts
+[32mINFO[39m [2025-04-28 04:47:57.899 +0000] (BUNDLER - Build): [36mStart bundling Mastra[39m
+[32mINFO[39m [2025-04-28 04:47:57.902 +0000] (BUNDLER - Build): [36mAnalyzing dependencies...[39m
+[32mINFO[39m [2025-04-28 04:47:58.538 +0000] (BUNDLER - Build): [36mOptimizing dependencies...[39m
+[32mINFO[39m [2025-04-28 04:48:10.134 +0000] (BUNDLER - Build): [36mBundling Mastra application[39m
+[32mINFO[39m [2025-04-28 04:48:11.759 +0000] (BUNDLER - Build): [36mBundling Mastra done[39m
+[32mINFO[39m [2025-04-28 04:48:11.760 +0000] (BUNDLER - Build): [36mCopying public files[39m
+[32mINFO[39m [2025-04-28 04:48:11.760 +0000] (BUNDLER - Build): [36mDone copying public files[39m
+[32mINFO[39m [2025-04-28 04:48:11.760 +0000] (BUNDLER - Build): [36mInstalling dependencies[39m
+npm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead
+[32mINFO[39m [2025-04-28 04:48:16.757 +0000] (BUNDLER - Build): [36mnpm warn deprecated node-domexception@1.0.0: Use your platform's native DOMException instead[39m
+added 68 packages, and audited 69 packages in 8s
+[32mINFO[39m [2025-04-28 04:48:19.887 +0000] (BUNDLER - Build): [36madded 68 packages, and audited 69 packages in 8s[39m
+10 packages are looking for funding
+  run `npm fund` for details
+[32mINFO[39m [2025-04-28 04:48:19.888 +0000] (BUNDLER - Build): [36m10 packages are looking for funding
+  run `npm fund` for details[39m
+found 0 vulnerabilities
+[32mINFO[39m [2025-04-28 04:48:19.888 +0000] (BUNDLER - Build): [36mfound 0 vulnerabilities[39m
+[32mINFO[39m [2025-04-28 04:48:19.909 +0000] (BUNDLER - Build): [36mDone installing dependencies[39m
