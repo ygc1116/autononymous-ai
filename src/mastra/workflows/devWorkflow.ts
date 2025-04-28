@@ -1,39 +1,4 @@
-import { Workflow } from "@mastra/core";
-// ワークフローで使用するエージェントをインポートします
-import { planner } from "../agents/planner";
-import { coder } from "../agents/coder";
-// 将来的に追加する可能性のあるエージェント (例)
-// import { verifier } from "../agents/verifier";
-// import { deployer } from "../agents/deployer";
 
-// 'dev' という名前の開発ワークフローを定義
-export const devWorkflow = new Workflow("dev")
-  // 1. 'plan' ステップ: planner エージェントを実行
-  .step("plan", async (ctx) => {
-    // ワークフローの初期入力 (ctx.input.spec) を planner に渡して実行
-    // .spec はワークフロー実行時に渡す想定の入力キー
-    const planResult = await planner.generate([
-      { role: "user", content: ctx.input.spec }, // ユーザーからの仕様を渡す
-    ]);
-    // planner の生成結果 (実装ステップリスト) を返す
-    return planResult;
-  })
-  // 2. 'execute' ステップ: coder エージェントを実行
-  .step("execute", async (ctx) => {
-    // 前の 'plan' ステップの出力 (ctx.steps.plan.output) を coder に渡して実行
-    const codeResult = await coder.generate([
-      { role: "user", content: `以下のステップを実行してください:\n${ctx.steps.plan.output}` }, // プランナーの出力を指示として渡す
-    ]);
-    // coder の実行結果 (コード生成やツール実行のログなど) を返す
-    return codeResult;
-  });
-  // 3. 'verify' ステップ (将来追加する例)
-  // .step("verify", async (ctx) => verifier.generate(ctx.steps.execute.output))
-  // 4. 'deploy' ステップ (将来追加する例)
-  // .after("deploy", async (ctx) => deployer.generate(ctx.steps.verify.output));
-
-// 必要に応じて、ワークフロー全体の入力スキーマを定義することもできます
-// devWorkflow.setInputSchema({ ... });
 
 import { Workflow } from "@mastra/core";
 import { planner } from "../agents/planner";
@@ -101,10 +66,10 @@ ${retrievedContext || "特にありません。"}
     return codeResult;
   });
 103    .step("test", async (ctx) => {
-   104      console.log("Executing tests...");
+104      console.log("Executing tests...");
    105      // execute ステップの出力 (ctx.steps.execute.output) をテストツールに渡す
    106      const testResult = await testExecution.execute(ctx.steps.execute.output);
    107      console.log("Test result:", testResult);
    108      return testResult;
-   109    });
+109    });
   // ... (将来的な verify, deploy ステップ)
