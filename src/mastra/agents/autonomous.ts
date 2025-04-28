@@ -1,4 +1,5 @@
 import { Agent } from "@mastra/core";
+import { google } from '@ai-sdk/google';
 import { openai } from "@ai-sdk/openai";
 import { codeExecution, fileWriting, webBrowsing } from "../tools";
 
@@ -24,6 +25,6 @@ export const autonomousAgent = new Agent({
 
     Be proactive, resourceful, and persistent. Learn from your mistakes and strive to improve your performance over time.
   `,
-  model: openai.chat("gpt-4o"),
+  model: google("gemini-2.0-flash-001"),
   tools: { codeExecution, fileWriting, webBrowsing },
 });
