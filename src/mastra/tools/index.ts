@@ -20,6 +20,10 @@ interface WeatherResponse {
   };
 }
 
+import { codeExecution } from './codeExecution';
+import { fileWriting } from './fileWriting';
+import { webBrowsing } from './webBrowsing';
+
 export const weatherTool = createTool({
   id: 'get-weather',
   description: 'Get current weather for a location',
@@ -100,3 +104,5 @@ function getWeatherCondition(code: number): string {
   };
   return conditions[code] || 'Unknown';
 }
+
+export { codeExecution, fileWriting, webBrowsing };

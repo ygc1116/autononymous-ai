@@ -2,6 +2,7 @@ import { google } from '@ai-sdk/google';
 import { Agent } from '@mastra/core/agent';
 import { weatherTool } from '../tools';
 
+import { autonomousAgent } from './autonomous';
 export const weatherAgent = new Agent({
   name: 'Weather Agent',
   instructions: `
@@ -19,3 +20,5 @@ export const weatherAgent = new Agent({
   model: google('gemini-1.5-pro-latest'),
   tools: { weatherTool },
 });
+
+export { autonomousAgent };
