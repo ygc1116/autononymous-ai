@@ -105,4 +105,4 @@ function getWeatherCondition(code: number): string {
   return conditions[code] || 'Unknown';
 }
 
-export { codeExecution, fileWriting, webBrowsing };
+export { codeExecution, fileWriting, webBrowsing, testExecution };
