@@ -1,0 +1,41 @@
+saveCheatsheetTool --content "Autoname AI Project
+=================================================
+
+Project Overview
+-----------------
+
+Autoname is an AI project that automatically assigns names to objects.
+
+Design Patterns
+---------------
+
+- Factory pattern: The `NameGenerator` class creates different name generators for different types of objects.
+- Singleton pattern: The `NameGenerator` class is a singleton, ensuring that only one instance of it is created.
+
+Important Classes and Functions
+-------------------------------
+
+- `NameGenerator`: The main class that generates names for objects.
+- `NameGeneratorFactory`: Creates different `NameGenerator` instances based on the type of object.
+- `NameGeneratorBase`: The base class for all name generators.
+- `NameGeneratorFactoryBase`: The base class for all name generator factories.
+- `ObjectType`: An enumeration that defines the different types of objects that can be named.
+- `Name`: A class that represents a name.
+
+Coding Conventions
+------------------
+
+- Class names should be CamelCase.
+- Function names should be snake\\_case.
+- Variable names should be snake\\_case.
+- Use underscores to separate words in long variable names.
+- Use docstrings to document functions and classes.
+
+Unique Design Patterns and Implementation Features
+-------------------------------------------------
+
+- The use of the factory pattern and singleton pattern to create and manage name generators.
+- The ability to add new name generators by extending the `NameGeneratorBase` class and registering it with the `NameGeneratorFactory`.
+- The use of a simple naming algorithm for generating names, which can be easily customized by extending the `NameGeneratorBase` class.
+
+" --outputPath ./output/rules/autoname_rules.md --append false --section "Autoname AI Project" --sectionIndex 1 --totalSections 1
