@@ -64,12 +64,12 @@ ${retrievedContext || "特にありません。"}
       { role: "user", content: `以下のステップを実行してください:\n${ctx.steps.plan.output}` },
     ]);
     return codeResult;
-  });
-103    .step("test", async (ctx) => {
-104      console.log("Executing tests...");
-   105      // execute ステップの出力 (ctx.steps.execute.output) をテストツールに渡す
-   106      const testResult = await testExecution.execute(ctx.steps.execute.output);
-   107      console.log("Test result:", testResult);
-   108      return testResult;
-109    });
+  }) 
+  .step("test", async (ctx) => {
+      console.log("Executing tests...");
+      // execute ステップの出力 (ctx.steps.execute.output) をテストツールに渡す
+      const testResult = await testExecution.execute(ctx.steps.execute.output);
+      console.log("Test result:", testResult);
+      return testResult;
+    });
   // ... (将来的な verify, deploy ステップ)
