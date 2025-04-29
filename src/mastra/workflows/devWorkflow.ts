@@ -2,7 +2,7 @@
 
 import { Workflow } from "@mastra/core";
 import { planner } from "../agents/planner";
-import { coder } from "../agents/coder";
+import { CoderAgent } from "../agents/coder";
 // 仮のメモリコンポーネントをインポート (別途実装が必要)
 // import { memory } from "../memory/vectorStore"; // 例: ベクトルストア連携
 
@@ -60,16 +60,17 @@ ${retrievedContext || "特にありません。"}
   })
   // 3. 'execute' ステップ: (変更なし)
   .step("execute", async (ctx) => {
-    const codeResult = await coder.generate([
-      { role: "user", content: `以下のステップを実行してください:\n${ctx.steps.plan.output}` },
-    ]);
+    const coderAgent = new CoderAgent();
+    const codeResult = await coderAgent.generateCode(
+      `以下のステップを実行してください:\n${ctx.steps.plan.output}`
+    );
     return codeResult;
-  });
-103    .step("test", async (ctx) => {
-104      console.log("Executing tests...");
-   105      // execute ステップの出力 (ctx.steps.execute.output) をテストツールに渡す
-   106      const testResult = await testExecution.execute(ctx.steps.execute.output);
-   107      console.log("Test result:", testResult);
-   108      return testResult;
-109    });
+  })
+  .step("test", async (ctx) => {
+    console.log("Executing tests...");
+    // execute ステップの出力 (ctx.steps.execute.output) をテストツールに渡す
+    const testResult = await testExecution.execute(ctx.steps.execute.output);
+    console.log("Test result:", testResult);
+  })
+   
   // ... (将来的な verify, deploy ステップ)
