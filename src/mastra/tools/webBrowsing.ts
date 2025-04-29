@@ -1,16 +1,14 @@
-import { Tool } from "@mastra/core";
+import { createTool } from "@mastra/core";
+import { z } from "zod";
 
-export const webBrowsing = new Tool({
-  name: "webBrowsing",
+export const webBrowsing = createTool({
+  id: "webBrowsing",
   description: "Fetches the content of a webpage.",
-  args: {
-    url: {
-      type: "string",
-      description: "The URL of the webpage to fetch.",
-      required: true,
-    },
-  },
-  async run(args: { url: string }) {
+  inputSchema: z.object({
+    url: z.string().describe("The URL of the webpage to fetch."),
+  }),
+  outputSchema: z.string(),
+  async execute(args) {
     try {
       const response = await web_read({ url: args.url });
       return `Web browsing successful. Content: ${response}`;

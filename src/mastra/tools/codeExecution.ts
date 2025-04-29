@@ -1,16 +1,14 @@
-import { Tool } from "@mastra/core";
+import { createTool } from "@mastra/core";
+import { z } from "zod";
 
-export const codeExecution = new Tool({
-  name: "codeExecution",
+export const codeExecution = createTool({
+  id: "codeExecution",
   description: "Executes JavaScript code and returns the output.",
-  args: {
-    code: {
-      type: "string",
-      description: "The JavaScript code to execute.",
-      required: true,
-    },
-  },
-  async run(args: { code: string }) {
+  inputSchema: z.object({
+    code: z.string().describe("The JavaScript code to execute."),
+  }),
+  outputSchema: z.string(),
+  async execute(args) {
     try {
       // eslint-disable-next-line no-eval
       const result = eval(args.code);

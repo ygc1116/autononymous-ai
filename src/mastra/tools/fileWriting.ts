@@ -1,22 +1,16 @@
-import { Tool } from "@mastra/core";
+import { createTool } from "@mastra/core";
 import * as fs from 'fs/promises';
+import { z } from "zod";
 
-export const fileWriting = new Tool({
-  name: "fileWriting",
+export const fileWriting = createTool({
+  id: "fileWriting",
   description: "Writes content to a file.",
-  args: {
-    filePath: {
-      type: "string",
-      description: "The path to the file.",
-      required: true,
-    },
-    content: {
-      type: "string",
-      description: "The content to write to the file.",
-      required: true,
-    },
-  },
-  async run(args: { filePath: string; content: string }) {
+  inputSchema: z.object({
+    filePath: z.string().describe("The path to the file."),
+    content: z.string().describe("The content to write to the file."),
+  }),
+  outputSchema: z.string(),
+  async execute(args) {
     try {
       await fs.writeFile(args.filePath, args.content);
       return `File writing successful. File: ${args.filePath}`;
